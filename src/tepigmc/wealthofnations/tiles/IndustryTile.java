@@ -31,5 +31,4 @@ public class IndustryTile extends Tile {
   public void addDotRotation(Sprite dots) {
     dotRotations.add(dots);
   }
-
 }

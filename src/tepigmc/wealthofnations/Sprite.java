@@ -7,7 +7,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class Sprite {
-
   private File file;
   private BufferedImage image;
 
@@ -28,7 +27,12 @@ public class Sprite {
    * @param filePath the the path of the file to set
    */
   public Sprite(String filePath) {
-    setFile(filePath);
+    try {
+      setFile(filePath);
+    }
+    catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   /**
@@ -58,13 +62,8 @@ public class Sprite {
    * @param file the file to set
    * @throws IOException 
    */
-  public void setFile(String filePath) {
-    try {
-      setFile(new File(filePath));
-    }
-    catch (IOException e) {
-      e.printStackTrace();
-    }
+  public void setFile(String filePath) throws IOException {
+    setFile(new File(filePath));
   }
 
   /**
@@ -73,5 +72,4 @@ public class Sprite {
   public void setImage(BufferedImage image) {
     this.image = image;
   }
-
 }

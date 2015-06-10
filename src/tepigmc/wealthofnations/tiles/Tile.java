@@ -3,7 +3,6 @@ package tepigmc.wealthofnations.tiles;
 import tepigmc.location.Coordinates;
 
 public class Tile {
-
   protected String name;
   protected String nameId;
   protected Coordinates position;
@@ -55,5 +54,4 @@ public class Tile {
   public void setPosition(Coordinates position) {
     this.position = position;
   }
-
 }
