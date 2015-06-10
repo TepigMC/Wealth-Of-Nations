@@ -1,44 +1,77 @@
 package tepigmc.wealthofnations;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class Sprite {
 
-  private URL url;
+  private File file;
+  private BufferedImage image;
 
   /**
-   * @param url the url to set
+   * @param file the file to set
    */
-  public Sprite(URL url) {
-    setUrl(url);
-  }
-
-  /**
-   * Creates a Sprite without throwing a MalformedURLException
-   * @param url the url to set
-   */
-  public Sprite(String url) {
+  public Sprite(File file) {
     try {
-      setUrl(new URL(url));
+      setFile(file);
     }
-    catch (MalformedURLException e) {
+    catch (IOException e) {
       e.printStackTrace();
     }
   }
 
   /**
-   * @return the url
+   * Creates a Sprite without throwing a IOException
+   * @param filePath the the path of the file to set
    */
-  public URL getUrl() {
-    return url;
+  public Sprite(String filePath) {
+    setFile(filePath);
   }
 
   /**
-   * @param url the url to set
+   * @return the file
    */
-  public void setUrl(URL url) {
-    this.url = url;
+  public File getFile() {
+    return file;
+  }
+
+  /**
+   * @return the image
+   */
+  public BufferedImage getImage() {
+    return image;
+  }
+
+  /**
+   * @param file the file to set
+   * @throws IOException 
+   */
+  public void setFile(File file) throws IOException {
+    this.file = file;
+    setImage(ImageIO.read(file));
+  }
+
+  /**
+   * @param file the file to set
+   * @throws IOException 
+   */
+  public void setFile(String filePath) {
+    try {
+      setFile(new File(filePath));
+    }
+    catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * @param image the image to set
+   */
+  public void setImage(BufferedImage image) {
+    this.image = image;
   }
 
 }

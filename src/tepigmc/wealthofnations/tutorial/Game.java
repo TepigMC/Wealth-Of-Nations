@@ -1,4 +1,4 @@
-package tepigmc.wealthofnations;
+package tepigmc.wealthofnations.tutorial;
 
 import javax.swing.JFrame;
 
@@ -12,7 +12,7 @@ public class Game {
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     while (true) {
-      game.moveSprite();
+      game.moveBall();
       game.repaint();
       try {
         Thread.sleep(10);
