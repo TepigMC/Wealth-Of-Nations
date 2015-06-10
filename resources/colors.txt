@@ -1,0 +1,4 @@
+Farm:
+  Dots:
+    BG: rgb(222, 191, 82) #debf52
+    border: rgb(171, 140, 23) #ab8c17
