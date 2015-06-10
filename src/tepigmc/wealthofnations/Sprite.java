@@ -3,19 +3,28 @@ package tepigmc.wealthofnations;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
 public class Sprite {
-  private File file;
-  private BufferedImage image;
+  public static String resourceFolder = "resources/";
+  private List<BufferedImage> layers;
 
   /**
    * @param file the file to set
    */
+  public Sprite(BufferedImage image) {
+    addLayer(image);
+  }
+  
+  /**
+   * Creates a Sprite without throwing a IOException
+   * @param file the file to set
+   */
   public Sprite(File file) {
     try {
-      setFile(file);
+      addLayer(file);
     }
     catch (IOException e) {
       e.printStackTrace();
@@ -28,48 +37,66 @@ public class Sprite {
    */
   public Sprite(String filePath) {
     try {
-      setFile(filePath);
+      addLayer(filePath);
     }
     catch (IOException e) {
       e.printStackTrace();
     }
   }
-
+  
   /**
-   * @return the file
+   * Creates a copy of a sprite
+   * @param the sprite to copy
    */
-  public File getFile() {
-    return file;
+  public Sprite(Sprite sprite) {
+    List<BufferedImage> layers = sprite.getLayers();
+    for (BufferedImage image : layers) {
+      addLayer(image);
+    }
   }
 
   /**
-   * @return the image
+   * @return the layer
    */
-  public BufferedImage getImage() {
-    return image;
+  public List<BufferedImage> getLayers() {
+    return layers;
   }
 
   /**
-   * @param file the file to set
+   * @param layers the layers to set
+   */
+  public void setLayers(List<BufferedImage> layers) {
+    this.layers = layers;
+  }
+
+  /**
+   * @param index the layer index
+   * @return the layer
+   */
+  public BufferedImage getLayer(int index) {
+    return layers.get(index);
+  }
+
+  /**
+   * @param image the image to add
+   */
+  public void addLayer(BufferedImage image) {
+    this.layers.add(image);
+  }
+
+  /**
+   * @param file the file to add the image from
    * @throws IOException 
    */
-  public void setFile(File file) throws IOException {
-    this.file = file;
-    setImage(ImageIO.read(file));
+  public void addLayer(File file) throws IOException {
+    addLayer(ImageIO.read(file));
   }
 
   /**
-   * @param file the file to set
+   * @param file the file to add the image from
    * @throws IOException 
    */
-  public void setFile(String filePath) throws IOException {
-    setFile(new File(filePath));
-  }
-
-  /**
-   * @param image the image to set
-   */
-  public void setImage(BufferedImage image) {
-    this.image = image;
+  public void addLayer(String filePath) throws IOException {
+    addLayer(new File(resourceFolder, filePath));
   }
 }

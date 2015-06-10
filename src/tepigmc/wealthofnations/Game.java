@@ -8,8 +8,9 @@ public class Game {
     GamePanel game = new GamePanel();
     frame.add(game);
     frame.setSize(640, 480);
-    frame.setVisible(true);
+    frame.setLocationRelativeTo(null);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(true);
 
     while (true) {
       game.moveSprite();
