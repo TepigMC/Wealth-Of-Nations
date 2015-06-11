@@ -2,10 +2,11 @@ package tepigmc.wealthofnations;
 
 import javax.swing.JFrame;
 
-public class Game {
+public class WealthOfNations {
+
   public static void main(String[] args) {
     JFrame frame = new JFrame("Wealth of Nations");
-    GamePanel game = new GamePanel();
+    GameBoardPanel game = new GameBoardPanel();
     frame.add(game);
     frame.setSize(640, 480);
     frame.setLocationRelativeTo(null);
@@ -23,4 +24,5 @@ public class Game {
       }
     }
   }
+
 }

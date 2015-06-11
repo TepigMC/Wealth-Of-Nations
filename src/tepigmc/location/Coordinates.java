@@ -1,6 +1,7 @@
 package tepigmc.location;
 
 public class Coordinates {
+
   private int x;
   private int y;
 
@@ -49,6 +50,16 @@ public class Coordinates {
   }
 
   /**
+   * Adds two coordinates together
+   * @param x the horizontal coordinate to add to this
+   * @param y the vertical coordinate to add to this
+   * @return the result of the addition
+   */
+  public Coordinates add(int x, int y) {
+    return new Coordinates(this.x + x, this.y + y);
+  }
+
+  /**
    * Multiplies Coordinates with an integer
    * @param the constant
    * @return the calculated Coordinates
@@ -73,4 +84,5 @@ public class Coordinates {
   public String toString() {
     return "Coordinates(x: " + this.x + ", y: " + this.y + ")";
   }
+
 }

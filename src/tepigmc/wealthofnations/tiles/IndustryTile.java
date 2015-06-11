@@ -1,33 +1,36 @@
 package tepigmc.wealthofnations.tiles;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.Graphics;
 
 import tepigmc.location.Coordinates;
-import tepigmc.wealthofnations.Sprite;
+import tepigmc.wealthofnations.graphics.Drawable;
+import tepigmc.wealthofnations.graphics.ImageFrame;
+import tepigmc.wealthofnations.graphics.ImageLayer;
+import tepigmc.wealthofnations.graphics.ImageSprite;
 
-public class IndustryTile extends Tile {
-  protected Sprite background;
-  protected List<Sprite> dotRotations;
+public class IndustryTile extends Tile implements Drawable {
+
+  protected ImageFrame background;
+  protected ImageSprite dotRotations;
   protected int rotation;
 
   public IndustryTile(String name, Coordinates position) {
-    super(name, "industry_tile_" + name.toLowerCase().replace(' ', '_'), position);
-    dotRotations = new ArrayList<Sprite>();
-  }
-
-  /**
-   * @return the dotRotations
-   */
-  public List<Sprite> getDotRotations() {
-    return dotRotations;
+    super(name, name.toLowerCase().replace(' ', '_'), position);
+    setDotRotations(new ImageSprite());
   }
 
   /**
    * @return the background
    */
-  public Sprite getBackground() {
+  public ImageFrame getBackground() {
     return background;
+  }
+
+  /**
+   * @return the dots
+   */
+  public ImageSprite getDotRotations() {
+    return dotRotations;
   }
 
   /**
@@ -38,17 +41,17 @@ public class IndustryTile extends Tile {
   }
 
   /**
-   * @param dotRotations the dotRotations to set
+   * @param background the background to set
    */
-  public void setDotRotations(List<Sprite> dotRotations) {
-    this.dotRotations = dotRotations;
+  public void setBackground(ImageFrame background) {
+    this.background = background;
   }
 
   /**
-   * @param background the background to set
+   * @param dotRotations the dot rotations to set
    */
-  public void setBackground(Sprite background) {
-    this.background = background;
+  public void setDotRotations(ImageSprite dotRotations) {
+    this.dotRotations = dotRotations;
   }
 
   /**
@@ -59,28 +62,56 @@ public class IndustryTile extends Tile {
   }
 
   /**
-   * @param index the index of the dotRotation
-   * @return the dotRotation at index
+   * @param index the index of the dot rotation
+   * @return the dot rotation layer at index
    */
-  public Sprite getDotRotation(int index) {
-    return dotRotations.get(index);
+  public ImageLayer getDotRotation(int index) {
+    return dotRotations.getLayer(index);
   }
 
   /**
-   * @param index the index of the dotRotation
-   * @return the dotRotation at index
+   * @param index the index of the dot rotation
+   * @return the dot rotation at index
    */
-  public Sprite getCurrentDots() {
+  public ImageLayer getCurrentDotRotation() {
     return getDotRotation(rotation);
   }
 
-  public void addDotRotation(Sprite dots) {
-    dotRotations.add(dots);
+  /**
+   * Adds a dot rotation
+   * @param dotRotation
+   */
+  public void addDotRotation(ImageLayer dotRotation) {
+    dotRotations.addLayer(dotRotation);
   }
 
-  public Sprite toSprite() {
-    Sprite sprite = new Sprite(background);
-    sprite.addLayer(getCurrentDots().getLayer(0));
+  /**
+   * Creates a sprite to draw this tile
+   * @return the generated sprite
+   */
+  public ImageSprite toSprite() {
+    ImageSprite sprite = new ImageSprite(background);
+    sprite.addLayer(getCurrentDotRotation());
     return sprite;
   }
+
+  /**
+   * Draws this tile in the graphics
+   * @param graphics the graphics to draw in
+   * @param x the horizontal coordinate to draw at
+   * @param y the vertical coordinate to draw at
+   */
+  public void draw(Graphics graphics, int x, int y) {
+    toSprite().draw(graphics, x, y);
+  }
+
+  /**
+   * Draws this tile in the graphics
+   * @param graphics the graphics to draw in
+   * @param coordinates the coordinates to draw at
+   */
+  public void draw(Graphics graphics, Coordinates coordinates) {
+    toSprite().draw(graphics, coordinates);
+  }
+
 }

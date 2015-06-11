@@ -7,6 +7,7 @@ import java.awt.RenderingHints;
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel {
+
   private static final long serialVersionUID = 3172608727170117600L;
   int x = 0, y = 0;
 
@@ -23,4 +24,5 @@ public class GamePanel extends JPanel {
         RenderingHints.VALUE_ANTIALIAS_ON);
     g2d.fillOval(x, y, 30, 30);
   }
+
 }

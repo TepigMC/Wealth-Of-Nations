@@ -9,7 +9,8 @@ import javax.swing.JPanel;
 import tepigmc.wealthofnations.tiles.FarmTile;
 import tepigmc.wealthofnations.tiles.IndustryTile;
 
-public class GamePanel extends JPanel {
+public class GameBoardPanel extends JPanel {
+
   private static final long serialVersionUID = -688258623776074646L;
   int x = 0, y = 0;
   IndustryTile farmTile = new FarmTile(null);
@@ -20,12 +21,12 @@ public class GamePanel extends JPanel {
   }
 
   @Override
-  public void paint(Graphics g) {
-    super.paint(g);
-    Graphics2D g2d = (Graphics2D) g;
-    g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+  public void paint(Graphics graphics) {
+    super.paint(graphics);
+    Graphics2D graphics2d = (Graphics2D) graphics;
+    graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
         RenderingHints.VALUE_ANTIALIAS_ON);
-    g2d.drawImage(farmTile.toSprite(), x, y, null);
-    //TODO this
+    farmTile.draw(graphics, 0, 0);
   }
+
 }
