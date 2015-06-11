@@ -88,7 +88,7 @@ public class ImageFrame implements Drawable {
    * @return the path to the resources
    */
   public String getResourceFolder() {
-    return "resources/";
+    return "resources/"; //"src/tepigmc/wealthofnations/resources/";
   }
 
   /**

@@ -26,7 +26,12 @@ public class GameBoardPanel extends JPanel {
     Graphics2D graphics2d = (Graphics2D) graphics;
     graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
         RenderingHints.VALUE_ANTIALIAS_ON);
-    farmTile.draw(graphics, 0, 0);
+    for (int i = 0; i < 9; i++)
+      for (int j = 0; j < 5; j++)
+        farmTile.draw(graphics, 84*i, 144*j);
+    for (int i = 0; i < 8; i++)
+      for (int j = 0; j < 4; j++)
+        farmTile.draw(graphics, 42 + 84*i, 72 + 144*j);
   }
 
 }

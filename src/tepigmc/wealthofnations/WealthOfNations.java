@@ -13,7 +13,9 @@ public class WealthOfNations {
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setVisible(true);
 
-    while (true) {
+    game.repaint();
+    
+    /*while (true) {
       game.moveSprite();
       game.repaint();
       try {
@@ -22,7 +24,7 @@ public class WealthOfNations {
       catch (InterruptedException e) {
         e.printStackTrace();
       }
-    }
+    }*/
   }
 
 }

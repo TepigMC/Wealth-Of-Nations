@@ -4,7 +4,6 @@ import tepigmc.location.Coordinates;
 import tepigmc.wealthofnations.graphics.ImageFrame;
 import tepigmc.wealthofnations.graphics.ImageLayer;
 
-
 public class FarmTile extends IndustryTile {
 
   public FarmTile(Coordinates position) {
