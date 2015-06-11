@@ -4,7 +4,7 @@ import java.awt.Graphics;
 
 import tepigmc.common.Coordinates;
 
-public class ImageLayer extends ImageFrame {
+public class ImagePositioned extends ImageGraphic {
 
   protected Coordinates coordinates;
 
@@ -12,7 +12,7 @@ public class ImageLayer extends ImageFrame {
    * @param image
    * @param coordinates
    */
-  public ImageLayer(ImageFrame image, Coordinates coordinates) {
+  public ImagePositioned(ImageGraphic image, Coordinates coordinates) {
     super(image);
     setCoordinates(coordinates);
   }
@@ -20,7 +20,7 @@ public class ImageLayer extends ImageFrame {
   /**
    * @param image
    */
-  public ImageLayer(ImageFrame image) {
+  public ImagePositioned(ImageGraphic image) {
     this(image, new Coordinates(0, 0));
   }
 

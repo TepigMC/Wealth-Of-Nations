@@ -6,59 +6,59 @@ import java.util.List;
 
 import tepigmc.common.Coordinates;
 
-public class ImageSprite implements Drawable {
+public class ImageLayered implements Drawable {
 
-  protected List<ImageLayer> layers;
+  protected List<ImagePositioned> layers;
 
   /**
    * @param image the first layer
    */
-  public ImageSprite(List<ImageLayer> layers) {
+  public ImageLayered(List<ImagePositioned> layers) {
     setLayers(layers);
   }
 
   /**
    * @param layer the first layer
    */
-  public ImageSprite(ImageLayer layer) {
-    setLayers(new ArrayList<ImageLayer>());
+  public ImageLayered(ImagePositioned layer) {
+    setLayers(new ArrayList<ImagePositioned>());
     addLayer(layer);
   }
 
   /**
    * @param frame the first layer
    */
-  public ImageSprite(ImageFrame frame) {
-    this(new ImageLayer(frame));
+  public ImageLayered(ImageGraphic frame) {
+    this(new ImagePositioned(frame));
   }
 
   /**
-   * Creates a copy of a sprite
-   * @param the sprite to copy
+   * Creates a copy of a layeredImage
+   * @param the layered image to copy
    */
-  public ImageSprite(ImageSprite sprite) {
-    setLayers(new ArrayList<ImageLayer>());
-    addAllLayers(sprite);
+  public ImageLayered(ImageLayered layeredImage) {
+    setLayers(new ArrayList<ImagePositioned>());
+    addAllLayers(layeredImage);
   }
 
   /**
-   * Creates an ImageSprite with no layers
+   * Creates an layered image with no layers
    */
-  public ImageSprite() {
-    this(new ArrayList<ImageLayer>());
+  public ImageLayered() {
+    this(new ArrayList<ImagePositioned>());
   }
 
   /**
    * @return the layer
    */
-  public List<ImageLayer> getLayers() {
+  public List<ImagePositioned> getLayers() {
     return layers;
   }
 
   /**
    * @param layers the layers to set
    */
-  public void setLayers(List<ImageLayer> layers) {
+  public void setLayers(List<ImagePositioned> layers) {
     this.layers = layers;
   }
 
@@ -66,31 +66,31 @@ public class ImageSprite implements Drawable {
    * @param index the layer index
    * @return the layer
    */
-  public ImageLayer getLayer(int index) {
+  public ImagePositioned getLayer(int index) {
     return layers.get(index);
   }
 
   /**
    * @param image the image to add
    */
-  public void addLayer(ImageLayer layer) {
+  public void addLayer(ImagePositioned layer) {
     layers.add(layer);
   }
 
   /**
-   * Adds the layers from another sprite
-   * @param sprite the sprite to add layers from
+   * Adds the layers from another layered image
+   * @param layeredImage the layered image to add layers from
    */
-  public void addAllLayers(ImageSprite sprite) {
-    addAllLayers(sprite.getLayers());
+  public void addAllLayers(ImageLayered layeredImage) {
+    addAllLayers(layeredImage.getLayers());
   }
 
   /**
    * Adds the layers from a list
    * @param layers the list to add layers from
    */
-  public void addAllLayers(List<ImageLayer> layers) {
-    for (ImageLayer image : layers) {
+  public void addAllLayers(List<ImagePositioned> layers) {
+    for (ImagePositioned image : layers) {
       addLayer(image);
     }
   }
@@ -102,7 +102,7 @@ public class ImageSprite implements Drawable {
    * @param y the vertical coordinate to draw at
    */
   public void draw(Graphics graphics, int x, int y) {
-    for (ImageLayer layer : layers) {
+    for (ImagePositioned layer : layers) {
       layer.draw(graphics, x, y);
     }
   }
@@ -113,7 +113,7 @@ public class ImageSprite implements Drawable {
    * @param coordinates the coordinates to draw at
    */
   public void draw(Graphics graphics, Coordinates coordinates) {
-    for (ImageLayer layer : layers) {
+    for (ImagePositioned layer : layers) {
       layer.draw(graphics, coordinates);
     }
   }

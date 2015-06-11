@@ -10,14 +10,14 @@ import javax.imageio.ImageIO;
 import tepigmc.common.Coordinates;
 import tepigmc.wealthofnations.WealthOfNations;
 
-public class ImageFrame implements Drawable {
+public class ImageGraphic implements Drawable {
 
   protected BufferedImage image;
 
   /**
    * @param image
    */
-  public ImageFrame(BufferedImage image) {
+  public ImageGraphic(BufferedImage image) {
     setImage(image);
   }
 
@@ -25,7 +25,7 @@ public class ImageFrame implements Drawable {
    * Creates an ImageFrame from a File without throwing a IOException
    * @param file
    */
-  public ImageFrame(File file) {
+  public ImageGraphic(File file) {
     try {
       setImage(file);
     }
@@ -38,7 +38,7 @@ public class ImageFrame implements Drawable {
    * Creates an ImageFrame from a path without throwing a IOException
    * @param filePath
    */
-  public ImageFrame(String filePath) {
+  public ImageGraphic(String filePath) {
     try {
       setImage(filePath);
     }
@@ -51,7 +51,7 @@ public class ImageFrame implements Drawable {
    * Creates a copy of another ImageFrame
    * @param image the ImageFrame to copy
    */
-  public ImageFrame(ImageFrame frame) {
+  public ImageGraphic(ImageGraphic frame) {
     this(frame.getImage());
   }
 
