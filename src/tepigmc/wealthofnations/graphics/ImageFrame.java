@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import tepigmc.location.Coordinates;
+import tepigmc.common.Coordinates;
 import tepigmc.wealthofnations.WealthOfNations;
 
 public class ImageFrame implements Drawable {

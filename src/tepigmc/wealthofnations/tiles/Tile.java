@@ -1,6 +1,6 @@
 package tepigmc.wealthofnations.tiles;
 
-import tepigmc.location.Coordinates;
+import tepigmc.common.Coordinates;
 
 public class Tile {
 

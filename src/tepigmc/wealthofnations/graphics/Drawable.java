@@ -2,7 +2,7 @@ package tepigmc.wealthofnations.graphics;
 
 import java.awt.Graphics;
 
-import tepigmc.location.Coordinates;
+import tepigmc.common.Coordinates;
 
 public interface Drawable {
 

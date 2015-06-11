@@ -2,7 +2,7 @@ package tepigmc.wealthofnations.tiles;
 
 import java.awt.Graphics;
 
-import tepigmc.location.Coordinates;
+import tepigmc.common.Coordinates;
 import tepigmc.wealthofnations.graphics.Drawable;
 import tepigmc.wealthofnations.graphics.ImageFrame;
 import tepigmc.wealthofnations.graphics.ImageLayer;

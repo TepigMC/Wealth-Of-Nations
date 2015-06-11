@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
-import tepigmc.location.Coordinates;
+import tepigmc.common.Coordinates;
 
 public class ImageSprite implements Drawable {
 

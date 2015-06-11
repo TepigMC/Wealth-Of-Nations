@@ -1,4 +1,4 @@
-package tepigmc.location;
+package tepigmc.common;
 
 public class Coordinates {
 

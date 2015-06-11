@@ -1,6 +1,6 @@
 package tepigmc.wealthofnations.tiles;
 
-import tepigmc.location.Coordinates;
+import tepigmc.common.Coordinates;
 import tepigmc.wealthofnations.graphics.ImageFrame;
 import tepigmc.wealthofnations.graphics.ImageLayer;
 
