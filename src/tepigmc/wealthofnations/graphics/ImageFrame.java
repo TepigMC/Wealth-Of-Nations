@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import tepigmc.location.Coordinates;
+import tepigmc.wealthofnations.WealthOfNations;
 
 public class ImageFrame implements Drawable {
 
@@ -81,14 +82,7 @@ public class ImageFrame implements Drawable {
    * @throws IOException
    */
   public void setImage(String filePath) throws IOException {
-    setImage(new File(getResourceFolder(), filePath));
-  }
-
-  /**
-   * @return the path to the resources
-   */
-  public String getResourceFolder() {
-    return "resources/"; //"src/tepigmc/wealthofnations/resources/";
+    setImage(new File(WealthOfNations.getResourceFolder(), filePath));
   }
 
   /**

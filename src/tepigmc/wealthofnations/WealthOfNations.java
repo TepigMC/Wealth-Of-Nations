@@ -1,5 +1,8 @@
 package tepigmc.wealthofnations;
 
+import java.io.File;
+import java.net.URISyntaxException;
+
 import javax.swing.JFrame;
 
 public class WealthOfNations {
@@ -14,17 +17,26 @@ public class WealthOfNations {
     frame.setVisible(true);
 
     game.repaint();
-    
-    /*while (true) {
-      game.moveSprite();
-      game.repaint();
-      try {
-        Thread.sleep(10);
-      }
-      catch (InterruptedException e) {
-        e.printStackTrace();
-      }
-    }*/
+
+    /*
+     * while (true) { game.moveSprite(); game.repaint(); try { Thread.sleep(10);
+     * } catch (InterruptedException e) { e.printStackTrace(); } }
+     */
+  }
+
+  /**
+   * @return the path to the resources
+   */
+  public static File getResourceFolder() {
+    File file = null;
+    try {
+      file = new File(WealthOfNations.class.getResource("resources").toURI());
+    }
+    catch (URISyntaxException e) {
+      e.printStackTrace();
+    }
+    System.out.println(file);
+    return file;
   }
 
 }
