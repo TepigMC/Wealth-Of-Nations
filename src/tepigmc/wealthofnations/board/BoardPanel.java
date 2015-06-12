@@ -6,14 +6,13 @@ import java.awt.RenderingHints;
 
 import javax.swing.JPanel;
 
-import tepigmc.wealthofnations.tiles.FarmTile;
 import tepigmc.wealthofnations.tiles.IndustryTile;
 
 public class BoardPanel extends JPanel {
 
   private static final long serialVersionUID = -688258623776074646L;
   int x = 0, y = 0;
-  IndustryTile farmTile = new FarmTile();
+  IndustryTile farmTile = new IndustryTile("Farm");
 
   void moveSprite() {
     x++;

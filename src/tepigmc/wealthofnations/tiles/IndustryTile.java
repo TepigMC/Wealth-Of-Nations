@@ -8,6 +8,7 @@ import tepigmc.wealthofnations.graphics.Drawable;
 import tepigmc.wealthofnations.graphics.ImageFrames;
 import tepigmc.wealthofnations.graphics.ImageGraphic;
 import tepigmc.wealthofnations.graphics.ImageLayered;
+import tepigmc.wealthofnations.graphics.ImagePositioned;
 
 public class IndustryTile extends Tile implements Drawable {
 
@@ -24,6 +25,8 @@ public class IndustryTile extends Tile implements Drawable {
       frames.loadImages("tiles/industry_tiles/" + nameId, "back", "png");
       background.addImage(frames);
       background.addImage(new ImageGraphic("tiles/industry_tiles/border_75.png"));
+      background.addImage(new ImagePositioned(new ImageGraphic(
+          "tiles/automation_token.png"), new Coordinates(21, 24)));
       dotRotations.loadImages("tiles/industry_tiles/" + nameId, "dots", "png");
     }
     catch (FileNotFoundException e) {
