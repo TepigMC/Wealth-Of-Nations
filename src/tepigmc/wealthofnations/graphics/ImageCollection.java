@@ -98,7 +98,7 @@ public class ImageCollection {
    */
   public void loadImages(String folder, String base, String extension)
       throws FileNotFoundException {
-    File resources = new File(WealthOfNations.getResourceFolder(), folder);
+    File resources = new File(WealthOfNations.getAssetFolder(), folder);
     if (!resources.exists() || !resources.isDirectory())
       throw new FileNotFoundException("folder doesn't exist. " + resources);
     File file;

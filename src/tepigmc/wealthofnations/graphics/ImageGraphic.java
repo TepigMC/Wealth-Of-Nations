@@ -82,7 +82,7 @@ public class ImageGraphic implements Drawable {
    * @throws IOException
    */
   public void setImage(String filePath) throws IOException {
-    setImage(new File(WealthOfNations.getResourceFolder(), filePath));
+    setImage(new File(WealthOfNations.getAssetFolder(), filePath));
   }
 
   /**

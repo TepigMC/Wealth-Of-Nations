@@ -6,21 +6,25 @@ import java.io.FileNotFoundException;
 import tepigmc.common.Coordinates;
 import tepigmc.wealthofnations.graphics.Drawable;
 import tepigmc.wealthofnations.graphics.ImageFrames;
+import tepigmc.wealthofnations.graphics.ImageGraphic;
 import tepigmc.wealthofnations.graphics.ImageLayered;
 
 public class IndustryTile extends Tile implements Drawable {
 
-  protected ImageFrames background;
+  protected ImageLayered background;
   protected ImageLayered dotRotations;
   protected int rotation;
 
   public IndustryTile(String name, Coordinates position) {
     super(name, name.toLowerCase().replace(' ', '_'), position);
-    setBackground(new ImageFrames());
+    setBackground(new ImageLayered());
     setDotRotations(new ImageLayered());
     try {
-      background.loadImages("tiles/industry_tiles/" + nameId, "back" , "png");
-      dotRotations.loadImages("tiles/industry_tiles/" + nameId, "dots" , "png");
+      ImageFrames frames = new ImageFrames();
+      frames.loadImages("tiles/industry_tiles/" + nameId, "back", "png");
+      background.addImage(frames);
+      background.addImage(new ImageGraphic("tiles/industry_tiles/border_75.png"));
+      dotRotations.loadImages("tiles/industry_tiles/" + nameId, "dots", "png");
     }
     catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -30,7 +34,7 @@ public class IndustryTile extends Tile implements Drawable {
   /**
    * @return the background
    */
-  public ImageFrames getBackground() {
+  public ImageLayered getBackground() {
     return background;
   }
 
@@ -51,7 +55,7 @@ public class IndustryTile extends Tile implements Drawable {
   /**
    * @param background the background to set
    */
-  public void setBackground(ImageFrames background) {
+  public void setBackground(ImageLayered background) {
     this.background = background;
   }
 
@@ -84,7 +88,7 @@ public class IndustryTile extends Tile implements Drawable {
   public Drawable getCurrentDotRotation() {
     return getDotRotation(rotation);
   }
-  
+
   /**
    * Creates a sprite to draw this tile
    * @return the generated sprite
