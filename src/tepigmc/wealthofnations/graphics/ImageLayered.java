@@ -6,93 +6,37 @@ import java.util.List;
 
 import tepigmc.common.Coordinates;
 
-public class ImageLayered implements Drawable {
-
-  protected List<ImagePositioned> layers;
+public class ImageLayered extends ImageCollection implements Drawable {
 
   /**
-   * @param image the first layer
+   * @param layers the layers
    */
-  public ImageLayered(List<ImagePositioned> layers) {
-    setLayers(layers);
+  public ImageLayered(List<Drawable> layers) {
+    setImages(layers);
   }
 
   /**
    * @param layer the first layer
    */
-  public ImageLayered(ImagePositioned layer) {
-    setLayers(new ArrayList<ImagePositioned>());
-    addLayer(layer);
+  public ImageLayered(Drawable layer) {
+    this(new ArrayList<Drawable>());
+    addImage(layer);
   }
 
   /**
-   * @param frame the first layer
+   * Creates a layered image with layers from the collection
+   * @param collection the image collection to copy
    */
-  public ImageLayered(ImageGraphic frame) {
-    this(new ImagePositioned(frame));
+  public ImageLayered(ImageCollection collection) {
+    this(new ArrayList<Drawable>());
+    addAllImages(collection);
   }
 
   /**
-   * Creates a copy of a layeredImage
-   * @param the layered image to copy
-   */
-  public ImageLayered(ImageLayered layeredImage) {
-    setLayers(new ArrayList<ImagePositioned>());
-    addAllLayers(layeredImage);
-  }
-
-  /**
-   * Creates an layered image with no layers
+   * Creates a layered image with no images
    */
   public ImageLayered() {
-    this(new ArrayList<ImagePositioned>());
-  }
-
-  /**
-   * @return the layer
-   */
-  public List<ImagePositioned> getLayers() {
-    return layers;
-  }
-
-  /**
-   * @param layers the layers to set
-   */
-  public void setLayers(List<ImagePositioned> layers) {
-    this.layers = layers;
-  }
-
-  /**
-   * @param index the layer index
-   * @return the layer
-   */
-  public ImagePositioned getLayer(int index) {
-    return layers.get(index);
-  }
-
-  /**
-   * @param image the image to add
-   */
-  public void addLayer(ImagePositioned layer) {
-    layers.add(layer);
-  }
-
-  /**
-   * Adds the layers from another layered image
-   * @param layeredImage the layered image to add layers from
-   */
-  public void addAllLayers(ImageLayered layeredImage) {
-    addAllLayers(layeredImage.getLayers());
-  }
-
-  /**
-   * Adds the layers from a list
-   * @param layers the list to add layers from
-   */
-  public void addAllLayers(List<ImagePositioned> layers) {
-    for (ImagePositioned image : layers) {
-      addLayer(image);
-    }
+    this(new ArrayList<Drawable>());
   }
 
   /**
@@ -102,7 +46,7 @@ public class ImageLayered implements Drawable {
    * @param y the vertical coordinate to draw at
    */
   public void draw(Graphics graphics, int x, int y) {
-    for (ImagePositioned layer : layers) {
+    for (Drawable layer : images) {
       layer.draw(graphics, x, y);
     }
   }
@@ -113,7 +57,7 @@ public class ImageLayered implements Drawable {
    * @param coordinates the coordinates to draw at
    */
   public void draw(Graphics graphics, Coordinates coordinates) {
-    for (ImagePositioned layer : layers) {
+    for (Drawable layer : images) {
       layer.draw(graphics, coordinates);
     }
   }
