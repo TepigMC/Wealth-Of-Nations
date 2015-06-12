@@ -10,14 +10,16 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
+import tepigmc.wealthofnations.board.BoardPanel;
+
 public class WealthOfNations {
 
   public static void main(String[] args) {
     JFrame frame = new JFrame("Wealth of Nations");
-    GameBoardPanel game = new GameBoardPanel();
+    BoardPanel game = new BoardPanel();
     frame.add(game);
-    List<Image> icons = new ArrayList<Image>();
     try {
+      List<Image> icons = new ArrayList<Image>();
       icons.add(new ImageIcon(new File(getAssetFolder(), "gui/icon/icon_128.png").toURI()
           .toURL()).getImage());
       icons.add(new ImageIcon(new File(getAssetFolder(), "gui/icon/icon_64.png").toURI()
@@ -26,11 +28,11 @@ public class WealthOfNations {
           .toURL()).getImage());
       icons.add(new ImageIcon(new File(getAssetFolder(), "gui/icon/icon_16.png").toURI()
           .toURL()).getImage());
+      frame.setIconImages(icons);
     }
     catch (MalformedURLException e) {
       e.printStackTrace();
     }
-    frame.setIconImages(icons);
     frame.setSize(640, 480);
     frame.setLocationRelativeTo(null);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

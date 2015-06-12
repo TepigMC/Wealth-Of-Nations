@@ -12,13 +12,13 @@ import tepigmc.wealthofnations.graphics.ImageLayered;
 public class IndustryTile extends Tile implements Drawable {
 
   protected ImageLayered background;
-  protected ImageLayered dotRotations;
+  protected ImageFrames dotRotations;
   protected int rotation;
 
-  public IndustryTile(String name, Coordinates position) {
-    super(name, name.toLowerCase().replace(' ', '_'), position);
+  public IndustryTile(String name) {
+    super(name, name.toLowerCase().replace(' ', '_'));
     setBackground(new ImageLayered());
-    setDotRotations(new ImageLayered());
+    setDotRotations(new ImageFrames());
     try {
       ImageFrames frames = new ImageFrames();
       frames.loadImages("tiles/industry_tiles/" + nameId, "back", "png");
@@ -29,6 +29,7 @@ public class IndustryTile extends Tile implements Drawable {
     catch (FileNotFoundException e) {
       e.printStackTrace();
     }
+    setRotation(0);
   }
 
   /**
@@ -41,7 +42,7 @@ public class IndustryTile extends Tile implements Drawable {
   /**
    * @return the dots
    */
-  public ImageLayered getDotRotations() {
+  public ImageFrames getDotRotations() {
     return dotRotations;
   }
 
@@ -62,7 +63,7 @@ public class IndustryTile extends Tile implements Drawable {
   /**
    * @param dotRotations the dot rotations to set
    */
-  public void setDotRotations(ImageLayered dotRotations) {
+  public void setDotRotations(ImageFrames dotRotations) {
     this.dotRotations = dotRotations;
   }
 
@@ -71,6 +72,7 @@ public class IndustryTile extends Tile implements Drawable {
    */
   public void setRotation(int rotation) {
     this.rotation = rotation;
+    dotRotations.setCurrentFrameIndex(rotation);
   }
 
   /**
@@ -95,7 +97,7 @@ public class IndustryTile extends Tile implements Drawable {
    */
   public ImageLayered toImage() {
     ImageLayered sprite = new ImageLayered((Drawable) background);
-    sprite.addImage(getCurrentDotRotation());
+    sprite.addImage(dotRotations);
     return sprite;
   }
 

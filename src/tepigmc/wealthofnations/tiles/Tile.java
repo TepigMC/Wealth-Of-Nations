@@ -1,17 +1,13 @@
 package tepigmc.wealthofnations.tiles;
 
-import tepigmc.common.Coordinates;
-
 public class Tile {
 
   protected String name;
   protected String nameId;
-  protected Coordinates position;
 
-  public Tile(String name, String nameId, Coordinates position) {
+  public Tile(String name, String nameId) {
     setName(name);
     setNameId(nameId);
-    setPosition(position);
   }
 
   /**
@@ -29,13 +25,6 @@ public class Tile {
   }
 
   /**
-   * @return the position
-   */
-  public Coordinates getPosition() {
-    return position;
-  }
-
-  /**
    * @param name the name to set
    */
   public void setName(String name) {
@@ -47,13 +36,6 @@ public class Tile {
    */
   public void setNameId(String nameId) {
     this.nameId = nameId;
-  }
-
-  /**
-   * @param position the position to set
-   */
-  public void setPosition(Coordinates position) {
-    this.position = position;
   }
 
 }
