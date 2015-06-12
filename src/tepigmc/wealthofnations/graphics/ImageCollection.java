@@ -101,10 +101,9 @@ public class ImageCollection {
     File resources = new File(WealthOfNations.getResourceFolder(), folder);
     if (!resources.exists() || !resources.isDirectory())
       throw new FileNotFoundException("folder doesn't exist. " + resources);
-    for (int i = 1;; i++) {
-      File file = new File(resources, base + '_' + i + '.' + extension);
-      if (!file.exists())
-        return;
+    File file;
+    for (int i = 1; (file = new File(resources, base + '_' + i + '.' + extension))
+        .exists(); i++) {
       addImage(new ImageGraphic(file));
     }
   }
